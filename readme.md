@@ -24,21 +24,21 @@
 
   First, a DataWarehouse class was created, which is a wrapper for cassandra driver. It provides the C,R and U from CRUD.
 
-  | Action | Params | Response |
-  | ------------- |-------------| -----|
-  | get_employees | None | json array of employees(name, surname, position and id only) |
-  | get_employee | id | complete employee entry |
-  | post_employee | json employee (without id) | None |
-  | update_employee | complete employee json | None |
+   Action | Params | Response 
+   ------------- |-------------| -----
+   get_employees | None | json array of employees(name, surname, position and id only) 
+   get_employee | id | complete employee entry 
+   post_employee | json employee (without id) | None 
+   update_employee | complete employee json | None 
 
   A Flask application has the role of server that can be accessed by a proxy or an end user.
 
-  | Route | HTTP Method | ex Request | ex Response |
-  | ------ | ---- | ----------- | ---------- |
-  | /employees | GET | | `[{"name":"George","surname":"Pliskin","position":"CFO","id":"a971fd90-da35-11e5-9f0d-0bbbe57c8d4f"}]` |
-  | /employees | POST | `{"employee":{"name":"George","surname":"Pliskin","gender":"male","position":"CFO","salary":"1000"}}` | `{"code":"200"}` |
-  | /employees/:id | GET | `c7516460-d9bb-11e5-be7a-b5941680f03b` | `{"id":"c7516460-d9bb-11e5-be7a-b5941680f03b","gender":"male","name":"Jora","position":"CEO","salary":"1000000","surname":"Kardan"}` |
-  | /employee | UPDATE | `{"id":"c7516460-d9bb-11e5-be7a-b5941680f03b","gender":"male","name":"George","position":"CEO","salary":"1000000","surname":"Kardan"}` | `{"code":"200"}` |
+   Route | HTTP Method | ex Request | ex Response 
+   ------ | ---- | ----------- | ---------- 
+   /employees | GET | | `[{"name":"George","surname":"Pliskin","position":"CFO","id":"a971fd90-da35-11e5-9f0d-0bbbe57c8d4f"}]` 
+   /employees | POST | `{"employee":{"name":"George","surname":"Pliskin","gender":"male","position":"CFO","salary":"1000"}}` | `{"code":"200"}` 
+   /employees/:id | GET | `c7516460-d9bb-11e5-be7a-b5941680f03b` | `{"id":"c7516460-d9bb-11e5-be7a-b5941680f03b","gender":"male","name":"Jora","position":"CEO","salary":"1000000","surname":"Kardan"}` 
+   /employee | UPDATE | `{"id":"c7516460-d9bb-11e5-be7a-b5941680f03b","gender":"male","name":"George","position":"CEO","salary":"1000000","surname":"Kardan"}` | `{"code":"200"}` 
 
 As can be seen, for accessing and modifying resources RESTful(-ish) routes were used.
 Moreover, I decided to use UUIDs for employee identification since it would resolve two issues at once:
